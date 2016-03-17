@@ -100,12 +100,7 @@ angular.module("internationalPhoneNumber", [])
 
       value.replace(/[^\d]/g, '')
 
-    ctrl.$validators.internationalPhoneNumber = (value) ->
-      selectedCountry = element.intlTelInput('getSelectedCountryData')
-
-      if !value || (selectedCountry && selectedCountry.dialCode == value)
-        return true
-
+    ctrl.$validators.internationalPhoneNumber = () ->
       element.intlTelInput("isValidNumber")
 
     element.on 'blur keyup change', (event) ->

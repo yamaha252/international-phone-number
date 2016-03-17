@@ -93,12 +93,7 @@
             }
             return value.replace(/[^\d]/g, '');
           });
-          ctrl.$validators.internationalPhoneNumber = function(value) {
-            var selectedCountry;
-            selectedCountry = element.intlTelInput('getSelectedCountryData');
-            if (!value || (selectedCountry && selectedCountry.dialCode === value)) {
-              return true;
-            }
+          ctrl.$validators.internationalPhoneNumber = function() {
             return element.intlTelInput("isValidNumber");
           };
           element.on('blur keyup change', function(event) {
