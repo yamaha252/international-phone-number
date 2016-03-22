@@ -100,7 +100,9 @@ angular.module("internationalPhoneNumber", [])
 
       value.replace(/[^\d]/g, '')
 
-    ctrl.$validators.internationalPhoneNumber = () ->
+    ctrl.$validators.internationalPhoneNumber = (value) ->
+      if !value
+        return true
       element.intlTelInput("isValidNumber")
 
     element.on 'blur keyup change', (event) ->

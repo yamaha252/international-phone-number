@@ -93,7 +93,10 @@
             }
             return value.replace(/[^\d]/g, '');
           });
-          ctrl.$validators.internationalPhoneNumber = function() {
+          ctrl.$validators.internationalPhoneNumber = function(value) {
+            if (!value) {
+              return true;
+            }
             return element.intlTelInput("isValidNumber");
           };
           element.on('blur keyup change', function(event) {
